@@ -14,10 +14,17 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Header from './Header';
+import { Link, useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import PersonIcon from '@mui/icons-material/Person';
 
 const drawerWidth = "15%";
 
 export default function HeaderTest({children}) {
+
+    let navigate = useNavigate();
+    
   return (
     <Box sx={{ display : "flex" }}>
       <CssBaseline />
@@ -41,7 +48,7 @@ export default function HeaderTest({children}) {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -50,11 +57,11 @@ export default function HeaderTest({children}) {
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
-            ))}
+            ))} */}
           </List>
-          <Divider />
+        
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            {/* {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -63,8 +70,38 @@ export default function HeaderTest({children}) {
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
-            ))}
+            ))} */}
+
+<ListItemButton onClick = {()=>navigate('/blogs')}  >
+                  <ListItemIcon>
+                     <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Home"} />
+                </ListItemButton>
+
+                
+<ListItemButton onClick = {()=>navigate('/myblogs')}  >
+                  <ListItemIcon>
+                     <PersonIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"My Blogs"} />
+                </ListItemButton>
+
+
+                
+<ListItemButton onClick = {()=>navigate('/blogs/add')}  >
+                  <ListItemIcon>
+                     <PostAddIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Create Blog"} />
+                </ListItemButton>
+
+
           </List>
+
+          <Divider></Divider>
+
+          
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

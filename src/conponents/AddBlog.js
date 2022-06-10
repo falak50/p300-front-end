@@ -51,11 +51,13 @@ const AddBlog = () => {
            flexDirection={'column'} style={{width : "80%",margin : "auto"}}>
             <Typography fontWeight={'bold'} padding={3} color="grey" variant='h2' textAlign={'center'}>Post Your Blog </Typography>
             <InputLabel sx={labelStyles }>Title</InputLabel>
-            <TextField name="title" onChange={handleChange} value={inputs.title} margin="normal" variant="outlined"/>
+            <TextField required name="title" onChange={handleChange} value={inputs.title} margin="normal" variant="outlined"/>
             <InputLabel sx={labelStyles }>Description</InputLabel>
-            <TextField name="description" onChange={handleChange} value={inputs.description}  margin="normal" variant="outlined"/>
+            <TextField multiline minRows={8} name="description" onChange={handleChange} value={inputs.description}  margin="normal" variant="outlined"/>
             <InputLabel sx={labelStyles }>ImageURL</InputLabel>
-            <TextField  name="imageURL" onChange={handleChange} value={inputs.imageURL} margin="normal" variant="outlined"/>
+            <TextField  name="imageURL" 
+            type={"url"}
+            onChange={handleChange} value={inputs.imageURL} margin="normal" variant="outlined"/>
             <Button sx={{mt:2 , borderRadius:4}} variant="contained" color="warning" type='submit'>Submit</Button>
 
           </Box>
