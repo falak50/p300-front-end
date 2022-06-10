@@ -27,7 +27,7 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
    //console.log(title,isUser);
     return (
         <div>
-             <Card sx={{ width: "40%"  , margin:'auto', mt:2 ,padding:2 ,boxShadow:"6px 6px 12px #ccc" , ":hover:":{boxShadow:"12px 12px 24px #ccc"}
+             <Card sx={{ width: "70%"  , margin:'auto', mt:2 ,padding:2 ,boxShadow:"6px 6px 12px #ccc" , ":hover:":{boxShadow:"12px 12px 24px #ccc"}
             //  hover dont work here why?
             }}>
 
@@ -47,12 +47,15 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
         title={title}
      //   subheader="September 14, 2016"
       />
-      <CardMedia
+     <a href={imageURL} target='_blank' rel='noreferrer'>
+
+     <CardMedia
         component="img"
-      //  height="194"
+       height="100%"
         image={imageURL}
-       alt="Paella dish"
+       alt="Blog App Image"
       />
+     </a>
      
       
       <CardContent>

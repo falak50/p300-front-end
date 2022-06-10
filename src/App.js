@@ -8,6 +8,7 @@ import BlogDetails from "./conponents/BlogDetails";
 import AddBlog from "./conponents/AddBlog";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store";
+import HeaderTest from "./conponents/HeaderTest";
 function App() {
   const dispath = useDispatch();
 
@@ -21,18 +22,24 @@ function App() {
  
   return ( <React.Fragment>
      <header>
-       <Header></Header> 
+     
+
+       <HeaderTest>
+
+       <Routes>
+      
+      <Route path="/auth" element={<Auth />} />    
+      <Route path="/blogs" element={<Blogs />} />
+      <Route path="/blogs/add" element={<AddBlog />} />
+      <Route path="/myBlogs" element={<UserBlogs />} />
+      <Route path="/myBlogs/:id" element={<BlogDetails />} />
+  
+</Routes>
+
+       </HeaderTest>
      </header> 
      <main>
-      <Routes>
-      
-              <Route path="/auth" element={<Auth />} />    
-              <Route path="/blogs" element={<Blogs />} />
-              <Route path="/blogs/add" element={<AddBlog />} />
-              <Route path="/myBlogs" element={<UserBlogs />} />
-              <Route path="/myBlogs/:id" element={<BlogDetails />} />
-          
-      </Routes>
+   
 
       </main> 
      

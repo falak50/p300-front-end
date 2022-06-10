@@ -18,8 +18,10 @@ const Header = () => {
     }
     return (
        <AppBar
-       position="sticky"
-       sx={{background : "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)"}}>
+       position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      //  sx={{background : "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)"}}
+       
+       >
       <Toolbar>
           <Typography variant='h4'>BlogApp</Typography>
    {  isLoggedIn  && 
