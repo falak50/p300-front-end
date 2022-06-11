@@ -71,7 +71,7 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
     }
       
       <CardContent>
-      <hr/>
+
      <br></br>
         <Typography variant="body2" color="text.secondary">
        <b>{title}</b>  <br/>
