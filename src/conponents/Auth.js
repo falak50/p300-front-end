@@ -38,7 +38,7 @@ const Auth = () => {
     e.preventDefault();
     console.log(inputs);
     if (isSignup) {
-      sendRequest("signup")
+      sendRequest("singup")
         .then((data) => localStorage.setItem("userId", data.user._id))
         .then(() => dispath(authActions.login()))
         .then(() => naviagte("/blogs"));
