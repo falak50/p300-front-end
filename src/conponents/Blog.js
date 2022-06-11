@@ -18,7 +18,8 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
    }
    const handlDelete = () => {
    deleteRequest()
-    .then(() => navigate("/blogs"));
+   .then(() =>window.location.reload(false))
+   //.then(() => navigate("/blogs"));
   //  .then(()=>navigate("/")
   //  .then(()=>navigate("/blogs")));
   ///problem
