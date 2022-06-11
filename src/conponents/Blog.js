@@ -38,17 +38,28 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
                 <IconButton color='error' onClick={handlDelete}><DeleteForeverIcon/></IconButton>
               </Box>
             )}  
-      <CardHeader
+      <CardHeader 
+      sx={{
+
+
+        
+        "& .MuiCardHeader-title":
+        {
+          fontSize : '1.5rem!important'
+        }
+      }}
         avatar={
           <Avatar sx={{ bgcolor: "red"}} aria-label="recipe">
-            {userName.charAt(0)} 
+          
+           {userName.charAt(0)} 
+         
           </Avatar>
         }
       
-        title={title}
+        title={userName}
      //   subheader="September 14, 2016"
       />
-     <a href={imageURL} target='_blank' rel='noreferrer'>
+    {imageURL && <a href={imageURL} target='_blank' rel='noreferrer'>
 
      <CardMedia
         component="img"
@@ -57,13 +68,13 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
        alt="Blog App Image"
       />
      </a>
-     
+    }
       
       <CardContent>
       <hr/>
      <br></br>
         <Typography variant="body2" color="text.secondary">
-       <b>{userName}</b> :
+       <b>{title}</b>  <br/>
         {description}
         </Typography>
       </CardContent>
