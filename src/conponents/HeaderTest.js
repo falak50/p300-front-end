@@ -25,6 +25,7 @@ import AddBlog from './AddBlog';
 import UserBlogs from './UserBlogs';
 import BlogDetails from './BlogDetails';
 import { Route } from 'react-router-dom';
+import { Avatar } from '@mui/material';
 
 const drawerWidth = "15%";
 
@@ -33,7 +34,22 @@ export default function HeaderTest() {
     let navigate = useNavigate();
 
 
-    const [name,setName] = React.useState('')
+    const [state,setState] = React.useState({
+
+      name : '',
+      email : ''
+    })
+
+    const logOut=()=>
+    {
+
+      setState({
+        name : '',
+        email : ''
+
+      })
+
+    }
     
   return (
     <Box sx={{ display : "flex" }}>
@@ -46,7 +62,7 @@ export default function HeaderTest() {
         </Toolbar>
       </AppBar> */}
 
-      <Header setName={setName}/>
+      <Header callback={logOut}/>
       <Drawer
         variant="permanent"
         sx={{
@@ -71,10 +87,32 @@ export default function HeaderTest() {
           </List>
         
           <List>
-          <div>
-          {name?.length===0? 'Guest' : name}
+          <div style={{
+        padding : '10px',textAlign : 'center',display : 'flex',
+        justifyContent : 'center',alignItems : 'center'}}>
+      
+          <Avatar sx={{ bgcolor: "red"}} aria-label="recipe">
+          
+           {state?.name[0]} 
+         
+          </Avatar>
+        
+        
          
         </div>
+
+        <div style={{textAlign :  'center'}}>
+        {state?.name?.length===0? 'Guest' : state?.name}
+        </div>
+
+        <div style={{textAlign :  'center',marginBottom : '10px',
+      fontSize : '12px',color : 'rgb(156, 163, 175)'}}>
+        {
+          state?.email?.length===0?' guest@gmail.com' : state.email
+        }
+        </div>
+
+        <Divider/>
             {/* {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
@@ -125,7 +163,7 @@ export default function HeaderTest() {
      
         <Routes>
       
-      <Route path="/auth" element={<Auth setName={setName} />} />    
+      <Route path="/auth" element={<Auth setState={setState} />} />    
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/blogs/add" element={<AddBlog />} />
       <Route path="/myBlogs" element={<UserBlogs />} />

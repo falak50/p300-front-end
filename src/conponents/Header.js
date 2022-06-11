@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store";
 
-const Header = () => {
+const Header = ({callback}) => {
 
   const dispath = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -85,7 +85,15 @@ const Header = () => {
           )}
           {isLoggedIn && (
             <Button
-              onClick={() => dispath(authActions.logout())}
+              onClick={() => {
+               dispath(authActions.logout())
+
+               callback()
+              }
+            
+            }
+
+
               LinkComponent={Link}
               to="/auth"
               variant="contained"

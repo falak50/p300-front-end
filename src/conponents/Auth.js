@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store";
 import { useNavigate } from "react-router-dom";
 
-const Auth = ({setName}) => {
+const Auth = ({setState}) => {
   const naviagte = useNavigate();
   const dispath = useDispatch();
   const [inputs, setInputs] = useState({
@@ -32,7 +32,11 @@ const Auth = ({setName}) => {
     const data = await res.data;
     console.log(data);
 
-    setName(data.user.name)
+    setState({
+      name : data.user.name,
+      email : data.user.email
+    })
+
     return data;
   };
 
@@ -44,7 +48,10 @@ const Auth = ({setName}) => {
         .then((data) =>{
           localStorage.setItem("userId", data.user._id)
 
-          setName(data.user.name)
+        setState({
+      name : data.user.name,
+      email : data.user.email
+    })
         })
         .then(() => dispath(authActions.login()))
         .then(() => naviagte("/blogs"));
