@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store";
 import { useNavigate } from "react-router-dom";
 
-const Auth = () => {
+const Auth = ({setName}) => {
   const naviagte = useNavigate();
   const dispath = useDispatch();
   const [inputs, setInputs] = useState({
@@ -31,6 +31,8 @@ const Auth = () => {
 
     const data = await res.data;
     console.log(data);
+
+    setName(data.user.name)
     return data;
   };
 
@@ -39,7 +41,11 @@ const Auth = () => {
     console.log(inputs);
     if (isSignup) {
       sendRequest("singup")
-        .then((data) => localStorage.setItem("userId", data.user._id))
+        .then((data) =>{
+          localStorage.setItem("userId", data.user._id)
+
+          setName(data.user.name)
+        })
         .then(() => dispath(authActions.login()))
         .then(() => naviagte("/blogs"));
     } else {

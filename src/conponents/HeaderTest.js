@@ -18,12 +18,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import PersonIcon from '@mui/icons-material/Person';
+import { Routes } from 'react-router-dom';
+import Auth from './Auth';
+import Blogs from './Blogs';
+import AddBlog from './AddBlog';
+import UserBlogs from './UserBlogs';
+import BlogDetails from './BlogDetails';
+import { Route } from 'react-router-dom';
 
 const drawerWidth = "15%";
 
-export default function HeaderTest({children}) {
+export default function HeaderTest() {
 
     let navigate = useNavigate();
+
+
+    const [name,setName] = React.useState('')
     
   return (
     <Box sx={{ display : "flex" }}>
@@ -36,7 +46,7 @@ export default function HeaderTest({children}) {
         </Toolbar>
       </AppBar> */}
 
-      <Header/>
+      <Header setName={setName}/>
       <Drawer
         variant="permanent"
         sx={{
@@ -61,6 +71,10 @@ export default function HeaderTest({children}) {
           </List>
         
           <List>
+          <div>
+          {name?.length===0? 'Guest' : name}
+         
+        </div>
             {/* {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
@@ -105,8 +119,19 @@ export default function HeaderTest({children}) {
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
-       {children}
+        {/* <Toolbar /> */}
+
+       
+     
+        <Routes>
+      
+      <Route path="/auth" element={<Auth setName={setName} />} />    
+      <Route path="/blogs" element={<Blogs />} />
+      <Route path="/blogs/add" element={<AddBlog />} />
+      <Route path="/myBlogs" element={<UserBlogs />} />
+      <Route path="/myBlogs/:id" element={<BlogDetails />} />
+  
+</Routes>
       </Box>
     </Box>
   );
